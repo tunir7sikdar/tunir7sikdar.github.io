@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tunir Sikdar — Data Engineer, Problem Solver & Systems Designer</title>
+<meta name="description" content="Tunir Sikdar — Data Engineer designing fault-tolerant, idempotent data platforms across the big data ecosystem and AWS/Azure cloud services.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap">
+    <span class="nav-name">TUNIR SIKDAR</span>
+    <div class="nav-links">
+      <a href="#about">about</a>
+      <a href="#approach">approach</a>
+      <a href="#experience">experience</a>
+      <a href="#stack">stack</a>
+      <a href="#credentials">credentials</a>
+      <a href="#contact">contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero wrap">
+  <span class="eyebrow">Data Engineer · Problem Solver · Systems Designer</span>
+  <h1>Tunir Sikdar</h1>
+  <p class="hero-sub">
+    I find where data pipelines break, missing fields, duplicate reprocessing, historical
+    gaps, and design the systems that don't break there again, across the
+    <strong>big data ecosystem</strong> and <strong>AWS / Azure cloud services</strong>.
+  </p>
+
+  <div class="cta-row">
+    <a class="btn btn-primary" href="assets/resume.pdf" download>Download résumé</a>
+    <a class="btn" href="mailto:sikdartunir@gmail.com">Email</a>
+    <a class="btn" href="https://www.linkedin.com/in/tunir-sikdar-679161121/" target="_blank" rel="noopener">LinkedIn</a>
+    <a class="btn" href="https://github.com/tunir7sikdar" target="_blank" rel="noopener">GitHub</a>
+  </div>
+
+  <div class="status-line">
+    <span class="status-dot"></span>
+    experience: <b>5+ yrs</b> &nbsp;·&nbsp; current: <b>Deloitte USI</b> &nbsp;·&nbsp; stack: <b>AWS / Azure / Databricks</b>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap">
+    <p class="section-label">// about</p>
+    <div class="about">
+      <p>
+        I'm a data engineer with five years of experience architecting and scaling
+        <strong>distributed data platforms</strong> across AWS and Azure. My job usually starts
+        with a problem someone else has already tried to work around: a vendor feed that keeps
+        sending malformed records, a reprocessing job that risks duplicating revenue-critical
+        data, a batch pipeline that needs to become near real-time without a rewrite. I design
+        the <strong>fault-tolerant, idempotent</strong> systems that close those gaps for good —
+        working across the <strong>Hadoop/Spark big data ecosystem</strong> and
+        <strong>AWS and Azure cloud services</strong> to do it, end to end: ingestion,
+        orchestration, storage, and governance.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="approach">
+  <div class="wrap">
+    <p class="section-label">// approach</p>
+    <p class="approach-intro">
+      Three systems I designed when the default approach wouldn't scale.
+    </p>
+
+    <div class="casefiles">
+
+      <article class="casefile">
+        <div class="casefile-head">
+          <span class="casefile-tag">Deloitte USI · Insurance</span>
+          <h3>Onboarding 17 vendor feeds without breaking commission data</h3>
+        </div>
+        <div class="casefile-row">
+          <span class="casefile-label">Problem</span>
+          <p>A greenfield commission platform needed to onboard 17 vendor feeds in different formats. Backfilling historical data for new sources risked duplicating or corrupting figures already used for agent payouts.</p>
+        </div>
+        <div class="casefile-row">
+          <span class="casefile-label">Approach</span>
+          <p>Architected a config-driven, <strong>idempotent ingestion framework</strong> with dedicated backfill logic, plus imputation and standardization rules to handle missing or malformed fields before they reached the lakehouse.</p>
+        </div>
+        <div class="casefile-row">
+          <span class="casefile-label">Outcome</span>
+          <p><strong>4.2 TB</strong> of daily volume onboarded across all 17 sources with <strong>zero duplication or data loss</strong> on reprocessing, and a <strong>99%+ on-time SLA</strong> for commission-critical reporting.</p>
+        </div>
+      </article>
+
+      <article class="casefile">
+        <div class="casefile-head">
+          <span class="casefile-tag">Fractal Analytics · Retail</span>
+          <h3>Recurring data gaps breaking a retailer's BI reporting</h3>
+        </div>
+        <div class="casefile-row">
+          <span class="casefile-label">Problem</span>
+          <p>A Fortune 500 retail client's inventory feeds arrived with missing SKU-level fields and inconsistent vendor formats, quietly breaking downstream BI reports.</p>
+        </div>
+        <div class="casefile-row">
+          <span class="casefile-label">Approach</span>
+          <p>Designed config-driven ETL pipelines with <strong>imputation logic</strong> for missing fields and automated <strong>backfill jobs</strong> for historical records, then restructured output into Delta tables with star/snowflake schema modeling.</p>
+        </div>
+        <div class="casefile-row">
+          <span class="casefile-label">Outcome</span>
+          <p>Reliable BI reporting at scale, with manual error-handling intervention down <strong>60%</strong> and annual licensing costs cut by <strong>$150K</strong>.</p>
+        </div>
+      </article>
+
+      <article class="casefile">
+        <div class="casefile-head">
+          <span class="casefile-tag">Deloitte USI · Firm Initiative</span>
+          <h3>Giving stakeholders real-time visibility into a batch-only system</h3>
+        </div>
+        <div class="casefile-row">
+          <span class="casefile-label">Problem</span>
+          <p>Business stakeholders had no way to see mobile app usage as it happened — every pipeline feeding their dashboards was batch-only.</p>
+        </div>
+        <div class="casefile-row">
+          <span class="casefile-label">Approach</span>
+          <p>Led a team of 5 data engineers to design a <strong>real-time event ingestion pipeline</strong> using Spark Structured Streaming, feeding operational dashboards directly.</p>
+        </div>
+        <div class="casefile-row">
+          <span class="casefile-label">Outcome</span>
+          <p>Stakeholders could monitor live usage metrics and act on them, instead of waiting on the next day's batch run.</p>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <p class="section-label">// experience</p>
+    <div class="timeline">
+
+      <div class="role current">
+        <div class="role-head">
+          <span class="role-title">Data Engineer II · <span class="role-company">Deloitte USI</span></span>
+          <span class="role-meta">Kolkata, India &nbsp;·&nbsp; 04/2025 – Present</span>
+        </div>
+        <ul>
+          <li>Solved the challenge of onboarding <strong>17 disparate vendor feeds</strong> into a single insurance data platform by architecting a config-driven, idempotent ingestion framework, including <strong>backfill logic</strong> to safely reprocess historical batch data for newly onboarded sources, scaling to <strong>4.2 TB of daily batch volume</strong> with no duplication or data loss on reprocessing.</li>
+          <li>Designed <strong>imputation and standardization rules</strong> to handle missing or malformed fields across third-party feeds, and defined the lakehouse table layout, partitioning, and compaction strategy that kept query performance stable as data volume scaled.</li>
+          <li>Architected a <strong>fault-tolerant orchestration layer</strong> on AWS Lambda and SQL Server control tables with automatic retry and checkpointing, sustaining a <strong>99%+ on-time SLA</strong> for commission-critical reporting.</li>
+        </ul>
+
+        <div class="firm-init">
+          <span class="firm-init-label">Firm initiatives</span>
+          <ul>
+            <li>Led a team of <strong>5 data engineers</strong> to build a scalable, real-time event ingestion and analytics pipeline for a mobile application using Spark Structured Streaming, powering operational dashboards for business stakeholders to monitor live usage metrics.</li>
+            <li>Architected a lakehouse platform for a fast-growing e-commerce client using Databricks Autoloader for incremental ingestion, scaling to support <strong>3x year-over-year growth</strong> in transaction volume across curated reporting layers.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="role">
+        <div class="role-head">
+          <span class="role-title">Data Engineer · <span class="role-company">Fractal Analytics</span></span>
+          <span class="role-meta">Pune, India &nbsp;·&nbsp; 09/2023 – 03/2025</span>
+        </div>
+        <ul>
+          <li>Delivered <strong>24 end-to-end big data projects</strong> on Azure, designing scalable PySpark and Spark SQL jobs on datasets exceeding <strong>500+ GB</strong> that improved execution efficiency by <strong>over 40%</strong>.</li>
+          <li>Solved recurring data gaps in a <strong>Fortune 500 retail client's</strong> inventory feeds by designing config-driven ETL pipelines with <strong>imputation logic</strong> for missing SKU-level fields and automated <strong>backfill jobs</strong> to reprocess historical records, structuring output into Delta tables with star and snowflake schema modeling for reliable BI reporting at scale.</li>
+          <li>Reduced manual intervention in error handling by <strong>60%</strong> by designing automated data validation and monitoring frameworks in PySpark, and cut annual licensing costs by <strong>$150K</strong> by re-architecting workflows onto Azure.</li>
+        </ul>
+      </div>
+
+      <div class="role">
+        <div class="role-head">
+          <span class="role-title">Application Developer · <span class="role-company">IBM India Pvt. Ltd.</span></span>
+          <span class="role-meta">Kolkata, India &nbsp;·&nbsp; 02/2021 – 08/2023</span>
+        </div>
+        <ul>
+          <li>Migrated <strong>40+ business-critical pipelines</strong> from legacy systems to Azure using ADF, and built data quality validation checks in Databricks and Python.</li>
+          <li>Reduced manual data preparation time by <strong>42 hours per month</strong> by streamlining extraction processes, and cut operating costs by <strong>30%</strong> through faster issue resolution.</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="stack">
+  <div class="wrap">
+    <p class="section-label">// stack</p>
+
+    <h3 class="stack-heading">Big data ecosystem</h3>
+    <div class="stack-groups">
+      <div class="stack-group">
+        <div class="skill-group-label">Processing</div>
+        <div class="chips"><span class="chip">Apache Spark</span><span class="chip">PySpark</span><span class="chip">Spark SQL</span></div>
+      </div>
+      <div class="stack-group">
+        <div class="skill-group-label">Streaming</div>
+        <div class="chips"><span class="chip">Spark Structured Streaming</span><span class="chip">Databricks Autoloader</span></div>
+      </div>
+      <div class="stack-group">
+        <div class="skill-group-label">Storage & table formats</div>
+        <div class="chips"><span class="chip">Delta Lake</span><span class="chip">Apache Iceberg</span><span class="chip">Hadoop (basic)</span></div>
+      </div>
+    </div>
+
+    <h3 class="stack-heading">Cloud services</h3>
+    <div class="cloud-grid">
+      <div class="cloud-col">
+        <div class="skill-group-label">AWS</div>
+        <div class="chips">
+          <span class="chip">Lambda</span><span class="chip">Glue</span><span class="chip">S3</span>
+          <span class="chip">EC2</span><span class="chip">CloudWatch</span><span class="chip">Secrets Manager</span>
+        </div>
+      </div>
+      <div class="cloud-col">
+        <div class="skill-group-label">Azure</div>
+        <div class="chips">
+          <span class="chip">Databricks</span><span class="chip">Data Factory (ADF)</span>
+          <span class="chip">Data Lake Storage (ADLS Gen2)</span><span class="chip">Key Vault</span><span class="chip">Azure SQL Database</span>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="stack-heading">Languages, design & tooling</h3>
+    <div class="skill-group">
+      <div class="skill-group-label">Languages</div>
+      <div class="chips"><span class="chip">Python</span><span class="chip">SQL</span><span class="chip">T-SQL</span></div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-label">System design</div>
+      <div class="chips">
+        <span class="chip">Distributed systems architecture</span>
+        <span class="chip">Fault-tolerant & idempotent pipeline design</span>
+        <span class="chip">Lakehouse & medallion architecture</span>
+        <span class="chip">SLA-driven orchestration</span>
+        <span class="chip">Scalability planning</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-label">Data engineering</div>
+      <div class="chips">
+        <span class="chip">Data modeling & normalization</span>
+        <span class="chip">Data quality tooling (Great Expectations)</span>
+        <span class="chip">Imputation & backfill strategies</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-label">DevOps & tools</div>
+      <div class="chips"><span class="chip">Azure DevOps</span><span class="chip">Git</span><span class="chip">CI/CD</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="credentials">
+  <div class="wrap">
+    <p class="section-label">// credentials</p>
+    <div class="cred-grid">
+      <div class="cred-col">
+        <h3>Certifications</h3>
+        <ul>
+          <li><strong>Databricks Certified Data Engineer Associate</strong> — 2025</li>
+          <li><strong>Fractal Certified PySpark Developer</strong> — Fractal Analytics</li>
+        </ul>
+        <h3 style="margin-top:24px;">Education</h3>
+        <ul>
+          <li><strong>B.Tech, Electronics and Communication Engineering</strong> — Heritage Institute of Technology, 2016–2020 (GPA 9.09/10.0)</li>
+        </ul>
+      </div>
+      <div class="cred-col">
+        <h3>Awards</h3>
+        <ul>
+          <li><strong>Outstanding Award</strong> — Deloitte USI</li>
+          <li><strong>Applause Award</strong> — Deloitte USI</li>
+          <li><strong>Star Award (Kaizen)</strong> — Fractal Analytics</li>
+          <li><strong>Manager Appreciation Award</strong> — IBM India Pvt. Ltd.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <p class="section-label">// contact</p>
+    <div class="footer-row">
+      <div class="footer-links">
+        <a href="mailto:sikdartunir@gmail.com">sikdartunir@gmail.com</a>
+        <a href="https://www.linkedin.com/in/tunir-sikdar-679161121/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://github.com/tunir7sikdar" target="_blank" rel="noopener">GitHub</a>
+      </div>
+      <span class="footer-note">Kolkata, India</span>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
