@@ -1,8 +1,8 @@
 // Progressive enhancement only — page is fully usable without this.
 (function () {
   function formatExperienceDuration(startDate, now) {
-    var months = (now.getFullYear() - startDate.getFullYear()) * 12 + (now.getMonth() - startDate.getMonth());
-    if (now.getDate() < startDate.getDate()) months -= 1;
+    var months = (now.getUTCFullYear() - startDate.getUTCFullYear()) * 12 + (now.getUTCMonth() - startDate.getUTCMonth());
+    if (now.getUTCDate() < startDate.getUTCDate()) months -= 1;
     if (months < 0) months = 0;
 
     var years = Math.floor(months / 12);
@@ -15,11 +15,21 @@
 
   function updateExperienceDuration() {
     var durationEl = document.getElementById('experience-duration');
-    if (!durationEl) return;
+    var statusLine = document.querySelector('.status-line');
 
-    // Career start date: Feb 2021.
-    var startDate = new Date(2021, 1, 1);
-    durationEl.textContent = formatExperienceDuration(startDate, new Date());
+    // Career start date: Feb 2021 (month is 0-indexed).
+    var startDate = new Date(Date.UTC(2021, 1, 1));
+    var durationText = formatExperienceDuration(startDate, new Date());
+
+    if (durationEl) {
+      durationEl.textContent = durationText;
+      return;
+    }
+
+    // Fallback: patch full status line text if the target element is missing.
+    if (statusLine) {
+      statusLine.innerHTML = '<span class="status-dot"></span> experience: <b>' + durationText + '</b> &nbsp;·&nbsp; current: <b>Deloitte USI</b> &nbsp;·&nbsp; stack: <b>AWS / Azure / Databricks</b>';
+    }
   }
 
   function setupRevealAnimations() {
@@ -48,7 +58,13 @@
     });
   }
 
-  updateExperienceDuration();
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', updateExperienceDuration);
+  } else {
+    updateExperienceDuration();
+  }
+
+  window.addEventListener('pageshow', updateExperienceDuration);
   setupRevealAnimations();
 
   var links = document.querySelectorAll('.nav-links a');
