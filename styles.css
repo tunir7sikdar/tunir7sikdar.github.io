@@ -97,7 +97,8 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outlin
 .wrap {
   max-width: var(--maxw);
   margin: 0 auto;
-  padding: 0 calc(16px + env(safe-area-inset-right)) 0 calc(16px + env(safe-area-inset-left));
+  padding-right: max(20px, env(safe-area-inset-right));
+  padding-left: max(20px, env(safe-area-inset-left));
 }
 
 @media (min-width: 641px) {
@@ -191,17 +192,26 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outlin
 
 .cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 32px; }
 .btn {
-  font-family: var(--font-mono);
-  font-size: 13px;
-  padding: 10px 18px;
-  border-radius: 6px;
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  padding: 11px 18px;
+  border-radius: 12px;
   border: 1px solid var(--panel-border);
   color: var(--text);
-  transition: border-color .15s ease, background .15s ease;
+  background: color-mix(in srgb, var(--panel) 88%, transparent);
+  box-shadow: var(--panel-shadow);
+  transition: border-color .15s ease, background .15s ease, transform .15s ease;
 }
-.btn:hover { text-decoration: none; border-color: var(--accent); background: var(--accent-soft); }
-.btn-primary { background: var(--accent); color: #06231f; border-color: var(--accent); font-weight: 600; }
-.btn-primary:hover { background: #6fe4d3; }
+.btn:hover { text-decoration: none; border-color: var(--accent); background: var(--accent-soft); transform: translateY(-1px); }
+.btn-primary {
+  background: linear-gradient(135deg, var(--accent), color-mix(in srgb, var(--accent) 70%, #ffffff));
+  color: #06231f;
+  border-color: transparent;
+  font-weight: 700;
+}
+.btn-primary:hover { background: linear-gradient(135deg, #6fe4d3, #4fd8c4); }
 
 .status-line {
   border: 1px solid var(--panel-border);
@@ -258,16 +268,22 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outlin
 }
 
 @media (max-width: 640px) {
+  .wrap {
+    padding-left: max(22px, env(safe-area-inset-left));
+    padding-right: max(22px, env(safe-area-inset-right));
+  }
   .hero { padding: 68px 0 42px; }
-  .hero-sub { font-size: 16px; }
+  .hero-sub { font-size: 16px; line-height: 1.58; }
   .cta-row { gap: 10px; margin-bottom: 24px; }
   .btn {
     flex: 1 1 100%;
     text-align: center;
-    min-height: 42px;
+    min-height: 50px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    border-radius: 14px;
+    font-size: 13px;
   }
   .status-line {
     padding: 11px;
