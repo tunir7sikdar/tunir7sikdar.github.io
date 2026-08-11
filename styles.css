@@ -16,6 +16,26 @@
   --maxw: 880px;
 }
 
+html {
+  color-scheme: dark light;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg: #f5f7fc;
+    --panel: #ffffff;
+    --panel-border: #d9e0ee;
+    --text: #111827;
+    --text-muted: #4b5568;
+    --accent: #0c7a6c;
+    --accent-soft: rgba(12, 122, 108, 0.1);
+    --gold: #9a5b00;
+    --gold-soft: rgba(154, 91, 0, 0.1);
+  }
+}
+
 * { box-sizing: border-box; }
 
 html { scroll-behavior: smooth; }
@@ -39,7 +59,15 @@ a { color: var(--accent); text-decoration: none; }
 a:hover { text-decoration: underline; }
 a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 
-.wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+.wrap {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0 calc(16px + env(safe-area-inset-right)) 0 calc(16px + env(safe-area-inset-left));
+}
+
+@media (min-width: 641px) {
+  .wrap { padding-left: 24px; padding-right: 24px; }
+}
 
 /* ---- Nav ---- */
 .nav {
@@ -56,8 +84,28 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outlin
 .nav-links a { white-space: nowrap; }
 .nav-links a { color: var(--text-muted); }
 .nav-links a:hover { color: var(--accent); text-decoration: none; }
+@media (max-width: 768px) {
+  .nav .wrap { justify-content: flex-start; row-gap: 10px; }
+  .nav-links {
+    width: 100%;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 10px;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 4px;
+  }
+  .nav-links::-webkit-scrollbar { display: none; }
+  .nav-links a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 34px;
+    padding: 0 2px;
+  }
+}
+
 @media (max-width: 480px) {
-  .nav-links { gap: 12px; font-size: 11px; }
+  .nav-links { font-size: 11px; }
 }
 
 /* ---- Hero ---- */
@@ -124,6 +172,26 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outlin
   100% { box-shadow: 0 0 0 0 rgba(79,216,196,0); }
 }
 .status-line b { color: var(--accent); font-weight: 600; }
+
+@media (max-width: 640px) {
+  .hero { padding: 68px 0 42px; }
+  .hero-sub { font-size: 16px; }
+  .cta-row { gap: 10px; margin-bottom: 24px; }
+  .btn {
+    flex: 1 1 100%;
+    text-align: center;
+    min-height: 42px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .status-line {
+    width: 100%;
+    font-size: 11.5px;
+    line-height: 1.5;
+    padding: 10px 12px;
+  }
+}
 
 /* ---- Section shared ---- */
 section { padding: 48px 0; border-top: 1px solid var(--panel-border); }
@@ -238,6 +306,20 @@ footer { padding: 40px 0 60px; border-top: 1px solid var(--panel-border); }
 .footer-links { display: flex; gap: 18px; font-family: var(--font-mono); font-size: 13px; }
 .footer-note { font-family: var(--font-mono); font-size: 12px; color: var(--text-muted); }
 
+@media (max-width: 640px) {
+  section { padding: 38px 0; }
+  .timeline { padding-left: 22px; }
+  .role::before { left: -22px; }
+  .role-title { font-size: 17px; }
+  .role-meta { white-space: normal; }
+  .casefile { padding: 18px; }
+  .footer-links {
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 10px 16px;
+  }
+}
+
 /* ---- Approach / case studies ---- */
 .approach-intro {
   font-family: var(--font-display);
@@ -300,4 +382,26 @@ footer { padding: 40px 0 60px; border-top: 1px solid var(--panel-border); }
 .cloud-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
 @media (max-width: 640px) { .cloud-grid { grid-template-columns: 1fr; gap: 16px; } }
 .cloud-col { border: 1px solid var(--panel-border); background: var(--panel); border-radius: 8px; padding: 16px 18px; }
+
+/* Reveal animation is attached by JS only, so non-JS browsers still render fully visible content. */
+.reveal {
+  opacity: 0;
+  transform: translateY(16px) scale(0.995);
+  transition: opacity 0.45s ease, transform 0.45s ease;
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
 
