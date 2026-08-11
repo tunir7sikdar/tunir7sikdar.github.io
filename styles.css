@@ -140,15 +140,31 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outlin
 .theme-toggle-icon { font-size: 13px; line-height: 1; }
 
 @media (max-width: 768px) {
-  .nav .wrap { justify-content: flex-start; row-gap: 10px; }
+  .nav .wrap {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    row-gap: 7px;
+    min-height: auto;
+    padding-top: 14px;
+    padding-bottom: 13px;
+  }
+  .nav-name {
+    margin-bottom: 0;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    line-height: 1.1;
+  }
   .nav-links {
     width: 100%;
     flex-wrap: nowrap;
     overflow-x: auto;
-    gap: 10px;
+    gap: 12px;
     scrollbar-width: none;
     -webkit-overflow-scrolling: touch;
-    padding-bottom: 4px;
+    padding-top: 2px;
+    padding-bottom: 1px;
+    align-items: center;
   }
   .nav-links::-webkit-scrollbar { display: none; }
   .nav-links a {
@@ -156,8 +172,15 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outlin
     align-items: center;
     min-height: 34px;
     padding: 0 2px;
+    line-height: 1.1;
   }
-  .theme-toggle { margin-left: 0; }
+  .theme-toggle {
+    margin-left: 0;
+    align-self: flex-start;
+    margin-top: 1px;
+    min-height: 32px;
+    padding: 6px 11px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -272,7 +295,12 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outlin
     padding-left: max(30px, env(safe-area-inset-left));
     padding-right: max(30px, env(safe-area-inset-right));
   }
-  .hero { padding: 68px 0 42px; }
+  .hero { padding: 72px 0 44px; }
+  .hero h1 {
+    margin-top: 4px;
+    margin-bottom: 18px;
+    letter-spacing: -0.03em;
+  }
   .hero-sub { font-size: 16px; line-height: 1.58; }
   .cta-row { gap: 10px; margin-bottom: 24px; }
   .btn {
@@ -298,6 +326,35 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outlin
   }
   .status-item b {
     font-size: 12px;
+  }
+}
+
+@media (max-width: 380px) {
+  .wrap {
+    padding-left: max(34px, env(safe-area-inset-left));
+    padding-right: max(34px, env(safe-area-inset-right));
+  }
+  .hero { padding-top: 64px; }
+  .hero h1 {
+    font-size: clamp(32px, 10vw, 39px);
+    line-height: 1.04;
+    margin-top: 6px;
+    margin-bottom: 16px;
+  }
+  .hero-sub { font-size: 15px; }
+  .nav .wrap {
+    row-gap: 6px;
+    padding-top: 13px;
+    padding-bottom: 12px;
+  }
+  .nav-links {
+    gap: 10px;
+    padding-bottom: 0;
+  }
+  .theme-toggle {
+    font-size: 11px;
+    min-height: 30px;
+    padding: 5px 10px;
   }
 }
 
