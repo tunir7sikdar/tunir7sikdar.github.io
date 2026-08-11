@@ -295,18 +295,36 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outlin
     padding-left: max(30px, env(safe-area-inset-left));
     padding-right: max(30px, env(safe-area-inset-right));
   }
-  .hero { padding: 72px 0 44px; }
+  .hero {
+    padding: 76px 0 48px;
+  }
+  .hero.wrap {
+    padding-left: max(36px, env(safe-area-inset-left));
+    padding-right: max(36px, env(safe-area-inset-right));
+  }
   .hero h1 {
     margin-top: 4px;
-    margin-bottom: 18px;
+    margin-bottom: 16px;
     letter-spacing: -0.03em;
   }
-  .hero-sub { font-size: 16px; line-height: 1.58; }
-  .cta-row { gap: 10px; margin-bottom: 24px; }
+  .hero-sub {
+    font-size: 16px;
+    line-height: 1.62;
+    max-width: 100%;
+    margin-bottom: 26px;
+  }
+  .cta-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-bottom: 26px;
+    width: 100%;
+    max-width: 420px;
+  }
   .btn {
-    flex: 1 1 100%;
+    width: 100%;
     text-align: center;
-    min-height: 50px;
+    min-height: 48px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -314,8 +332,9 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outlin
     font-size: 13px;
   }
   .status-line {
-    padding: 11px;
-    border-radius: 10px;
+    padding: 12px;
+    border-radius: 14px;
+    margin-top: 2px;
   }
   .status-items {
     grid-template-columns: 1fr;
@@ -334,14 +353,24 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outlin
     padding-left: max(34px, env(safe-area-inset-left));
     padding-right: max(34px, env(safe-area-inset-right));
   }
-  .hero { padding-top: 64px; }
+  .hero {
+    padding-top: 66px;
+    padding-bottom: 42px;
+  }
+  .hero.wrap {
+    padding-left: max(38px, env(safe-area-inset-left));
+    padding-right: max(38px, env(safe-area-inset-right));
+  }
   .hero h1 {
     font-size: clamp(32px, 10vw, 39px);
     line-height: 1.04;
     margin-top: 6px;
     margin-bottom: 16px;
   }
-  .hero-sub { font-size: 15px; }
+  .hero-sub {
+    font-size: 15px;
+    line-height: 1.6;
+  }
   .nav .wrap {
     row-gap: 6px;
     padding-top: 13px;
