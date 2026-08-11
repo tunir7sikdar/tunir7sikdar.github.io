@@ -31,6 +31,16 @@
     return getStoredTheme() || getSystemTheme();
   }
 
+  function getThemeMode() {
+    return getStoredTheme() || 'auto';
+  }
+
+  function getNextThemeMode(mode) {
+    if (mode === 'auto') return 'dark';
+    if (mode === 'dark') return 'light';
+    return 'auto';
+  }
+
   function applyTheme() {
     var root = document.documentElement;
     var stored = getStoredTheme();
@@ -48,18 +58,24 @@
 
     var textEl = button.querySelector('.theme-toggle-text');
     var iconEl = button.querySelector('.theme-toggle-icon');
-    var stored = getStoredTheme();
+    var mode = getThemeMode();
     var effective = getEffectiveTheme();
+    var nextMode = getNextThemeMode(mode);
 
     if (textEl) {
-      textEl.textContent = stored ? ('Theme: ' + (effective === 'dark' ? 'Dark' : 'Light')) : 'Theme: Auto';
+      if (mode === 'auto') {
+        textEl.textContent = 'Theme: Auto';
+      } else {
+        textEl.textContent = 'Theme: ' + (mode === 'dark' ? 'Dark' : 'Light');
+      }
     }
 
     if (iconEl) {
-      iconEl.textContent = effective === 'dark' ? '◑' : '◐';
+      iconEl.textContent = mode === 'auto' ? 'A' : (effective === 'dark' ? 'D' : 'L');
     }
 
-    button.setAttribute('aria-label', stored ? ('Switch to ' + (effective === 'dark' ? 'light' : 'dark') + ' mode') : 'Theme follows system settings. Tap to switch manually.');
+    button.setAttribute('aria-label', 'Theme mode is ' + mode + '. Tap to switch to ' + nextMode + '.');
+    button.setAttribute('title', 'Theme: ' + mode + ' (next: ' + nextMode + ')');
   }
 
   function setupThemeToggle() {
@@ -69,12 +85,29 @@
     applyTheme();
     updateThemeToggleLabel();
 
-    button.addEventListener('click', function () {
-      var nextTheme = getEffectiveTheme() === 'dark' ? 'light' : 'dark';
-      storeTheme(nextTheme);
+    var toggleTheme = function () {
+      var currentMode = getThemeMode();
+      var nextMode = getNextThemeMode(currentMode);
+
+      if (nextMode === 'auto') {
+        storeTheme(null);
+      } else {
+        storeTheme(nextMode);
+      }
+
       applyTheme();
       updateThemeToggleLabel();
+    };
+
+    button.addEventListener('click', function () {
+      toggleTheme();
     });
+
+    // Some mobile browsers can be inconsistent with delayed click dispatch.
+    button.addEventListener('touchend', function (event) {
+      event.preventDefault();
+      toggleTheme();
+    }, { passive: false });
 
     if (window.matchMedia) {
       var mq = window.matchMedia('(prefers-color-scheme: dark)');

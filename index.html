@@ -5,10 +5,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Tunir Sikdar — Data Engineer, Problem Solver & Systems Designer</title>
 <meta name="description" content="Tunir Sikdar — Data Engineer designing fault-tolerant, idempotent data platforms across the big data ecosystem and AWS/Azure cloud services.">
+<meta name="color-scheme" content="dark light">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
+<script>
+  (function () {
+    try {
+      var storedTheme = localStorage.getItem('preferred-theme');
+      if (storedTheme === 'dark' || storedTheme === 'light') {
+        document.documentElement.setAttribute('data-theme', storedTheme);
+      }
+    } catch (err) {
+      // Ignore storage errors and fall back to system theme.
+    }
+  })();
+</script>
+<link rel="stylesheet" href="styles.css?v=20260811a">
 </head>
 <body>
 
@@ -307,6 +320,6 @@
   </div>
 </footer>
 
-<script src="script.js"></script>
+<script src="script.js?v=20260811a"></script>
 </body>
 </html>
