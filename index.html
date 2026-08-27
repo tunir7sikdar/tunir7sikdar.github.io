@@ -62,7 +62,7 @@
   <div class="status-line">
     <span class="status-dot"></span>
     <div class="status-items" aria-label="Profile summary metrics">
-      <span class="status-item"><span class="status-k">Experience</span><b id="experience-duration">5+ years</b></span>
+      <span class="status-item"><span class="status-k">Experience</span><b id="experience-duration">5 years</b></span>
       <span class="status-item"><span class="status-k">Current</span><b>Deloitte USI</b></span>
       <span class="status-item"><span class="status-k">Stack</span><b>AWS | Azure | Databricks | Apache Spark</b></span>
     </div>
@@ -100,7 +100,7 @@
       <article class="casefile">
         <div class="casefile-head">
           <span class="casefile-tag">Deloitte USI · Insurance</span>
-          <h3>Onboarding 17 vendor feeds without breaking commission data</h3>
+          <h3>Onboarding multi-format vendor feeds without breaking commission data</h3>
         </div>
         <div class="casefile-row">
           <span class="casefile-label">Problem</span>
@@ -112,7 +112,7 @@
         </div>
         <div class="casefile-row">
           <span class="casefile-label">Outcome</span>
-          <p><strong>4.2 TB</strong> of daily volume onboarded across all 17 sources with <strong>zero duplication or data loss</strong> on reprocessing, and a <strong>99%+ on-time SLA</strong> for commission-critical reporting.</p>
+          <p><strong>4.2 TB</strong> of daily volume onboarded across the vendor feeds with <strong>zero duplication or data loss</strong> on reprocessing, and a <strong>99%+ on-time SLA</strong> for commission-critical reporting.</p>
         </div>
       </article>
 
@@ -161,29 +161,36 @@
 <section id="experience">
   <div class="wrap">
     <p class="section-label">// experience</p>
+    <div class="experience-controls" aria-label="Filter experience by company">
+      <button class="experience-filter is-active" type="button" data-experience-filter="all" aria-pressed="true">All roles</button>
+      <button class="experience-filter" type="button" data-experience-filter="deloitte" aria-pressed="false">Deloitte USI</button>
+      <button class="experience-filter" type="button" data-experience-filter="fractal" aria-pressed="false">Fractal Analytics</button>
+      <button class="experience-filter" type="button" data-experience-filter="ibm" aria-pressed="false">IBM India</button>
+      <span class="experience-count" id="experience-count" role="status" aria-live="polite">3 roles</span>
+    </div>
     <div class="timeline">
 
-      <div class="role current">
+      <div class="role current" data-experience-company="deloitte">
         <div class="role-head">
           <span class="role-title">Data Engineer II · <span class="role-company">Deloitte USI</span></span>
           <span class="role-meta">Kolkata, India &nbsp;·&nbsp; 04/2025 – Present</span>
         </div>
         <ul>
-          <li>Solved the challenge of onboarding <strong>17 disparate vendor feeds</strong> into a single insurance data platform by architecting a config-driven, idempotent ingestion framework, including <strong>backfill logic</strong> to safely reprocess historical batch data for newly onboarded sources, scaling to <strong>4.2 TB of daily batch volume</strong> with no duplication or data loss on reprocessing.</li>
-          <li>Designed <strong>imputation and standardization rules</strong> to handle missing or malformed fields across third-party feeds, and defined the lakehouse table layout, partitioning, and compaction strategy that kept query performance stable as data volume scaled.</li>
-          <li>Architected a <strong>fault-tolerant orchestration layer</strong> on AWS Lambda and SQL Server control tables with automatic retry and checkpointing, sustaining a <strong>99%+ on-time SLA</strong> for commission-critical reporting.</li>
+          <li>Architected a greenfield, config-driven, idempotent ingestion framework to ingest vendor feeds into a single insurance data platform, including <strong>backfill logic</strong> to safely reprocess historical batch data for newly onboarded sources, scaling to <strong>4.2 TB of daily batch volume</strong> with zero duplication or data loss on reprocessing.</li>
+          <li>Implemented technical and functional data quality checks that routed malformed records to a <strong>dead-letter queue (DLQ)</strong> for isolation and reprocessing, and designed <strong>imputation and standardization rules</strong> to handle missing or malformed fields across third-party feeds.</li>
+          <li>Led a team of <strong>5 engineers</strong> to re-architect the commission payout calculation process, reducing manual effort by about <strong>90%</strong> by moving from a weekly cycle to a daily cadence, and implemented a commission chargeback workflow that reduced turnaround from one month to one day.</li>
+          <li>Architected a <strong>fault-tolerant orchestration layer</strong> on AWS Lambda and SQL Server control tables with automatic retry and checkpointing, sustaining a <strong>99%+ on-time SLA</strong> for critical batch processing, with SNS-based alerting and a robust audit mechanism for full traceability.</li>
         </ul>
 
         <div class="firm-init">
           <span class="firm-init-label">Firm initiatives</span>
           <ul>
-            <li>Led a team of <strong>5 data engineers</strong> to build a scalable, real-time event ingestion and analytics pipeline for a mobile application using Spark Structured Streaming, powering operational dashboards for business stakeholders to monitor live usage metrics.</li>
-            <li>Architected a lakehouse platform for a fast-growing e-commerce client using Databricks Autoloader for incremental ingestion, scaling to support <strong>3x year-over-year growth</strong> in transaction volume across curated reporting layers.</li>
+            <li>Built an event ingestion and analytics pipeline for a mobile application using Azure Event Hubs and Spark Structured Streaming, powering dashboards that track user health criteria and longitudinal usage history for business stakeholders.</li>
           </ul>
         </div>
       </div>
 
-      <div class="role">
+      <div class="role" data-experience-company="fractal">
         <div class="role-head">
           <span class="role-title">Data Engineer · <span class="role-company">Fractal Analytics</span></span>
           <span class="role-meta">Pune, India &nbsp;·&nbsp; 09/2023 – 03/2025</span>
@@ -195,7 +202,7 @@
         </ul>
       </div>
 
-      <div class="role">
+      <div class="role" data-experience-company="ibm">
         <div class="role-head">
           <span class="role-title">Application Developer · <span class="role-company">IBM India Pvt. Ltd.</span></span>
           <span class="role-meta">Kolkata, India &nbsp;·&nbsp; 02/2021 – 08/2023</span>
@@ -207,6 +214,7 @@
       </div>
 
     </div>
+    <p class="experience-empty" id="experience-empty" hidden>No experience matches this filter.</p>
   </div>
 </section>
 
@@ -256,18 +264,18 @@
     <div class="skill-group">
       <div class="skill-group-label">System design</div>
       <div class="chips">
-        <span class="chip">Distributed systems architecture</span>
+        <span class="chip">Distributed systems (Lambda & Kappa)</span>
         <span class="chip">Fault-tolerant & idempotent pipeline design</span>
-        <span class="chip">Lakehouse & medallion architecture</span>
+        <span class="chip">Medallion architecture</span>
         <span class="chip">SLA-driven orchestration</span>
-        <span class="chip">Scalability planning</span>
+        <span class="chip">Scalability & process optimization</span>
       </div>
     </div>
     <div class="skill-group">
       <div class="skill-group-label">Data engineering</div>
       <div class="chips">
         <span class="chip">Data modeling & normalization</span>
-        <span class="chip">Data quality tooling (Great Expectations)</span>
+        <span class="chip">Data quality frameworks</span>
         <span class="chip">Imputation & backfill strategies</span>
       </div>
     </div>
@@ -312,7 +320,7 @@
     <div class="footer-row">
       <div class="footer-links">
         <a href="mailto:sikdartunir@gmail.com">sikdartunir@gmail.com</a>
-        <a href="tel:6290072095">6290072095</a>
+        <a href="tel:+916290072095">+91-6290072095</a>
         <a href="https://www.linkedin.com/in/tunir-sikdar-679161121/" target="_blank" rel="noopener">LinkedIn</a>
         <a href="https://github.com/tunir7sikdar" target="_blank" rel="noopener">GitHub</a>
       </div>

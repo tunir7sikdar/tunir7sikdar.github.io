@@ -184,14 +184,47 @@
     });
   }
 
+  function setupExperienceFilters() {
+    var filters = document.querySelectorAll('[data-experience-filter]');
+    var roles = document.querySelectorAll('[data-experience-company]');
+    var count = document.getElementById('experience-count');
+    var empty = document.getElementById('experience-empty');
+
+    if (!filters.length || !roles.length) return;
+
+    Array.prototype.forEach.call(filters, function (filter) {
+      filter.addEventListener('click', function () {
+        var selected = filter.getAttribute('data-experience-filter');
+        var visibleRoles = 0;
+
+        Array.prototype.forEach.call(filters, function (item) {
+          var isActive = item === filter;
+          item.classList.toggle('is-active', isActive);
+          item.setAttribute('aria-pressed', String(isActive));
+        });
+
+        Array.prototype.forEach.call(roles, function (role) {
+          var isVisible = selected === 'all' || role.getAttribute('data-experience-company') === selected;
+          role.classList.toggle('is-filtered-out', !isVisible);
+          if (isVisible) visibleRoles += 1;
+        });
+
+        if (count) count.textContent = visibleRoles + ' role' + (visibleRoles === 1 ? '' : 's');
+        if (empty) empty.hidden = visibleRoles !== 0;
+      });
+    });
+  }
+
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', function () {
       setupThemeToggle();
       updateExperienceDuration();
+      setupExperienceFilters();
     });
   } else {
     setupThemeToggle();
     updateExperienceDuration();
+    setupExperienceFilters();
   }
 
   window.addEventListener('pageshow', updateExperienceDuration);

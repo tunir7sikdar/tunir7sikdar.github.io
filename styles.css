@@ -430,6 +430,22 @@ section { padding: 48px 0; border-top: 1px solid var(--panel-border); }
 .about strong { color: var(--text); }
 
 /* ---- Experience timeline ---- */
+.experience-controls { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 0 0 24px; }
+.experience-filter {
+  border: 1px solid var(--panel-border);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  padding: 7px 12px;
+  cursor: pointer;
+  transition: border-color .2s ease, background .2s ease, color .2s ease;
+}
+.experience-filter:hover, .experience-filter.is-active { border-color: var(--accent); color: var(--text); background: var(--accent-soft); }
+.experience-count { color: var(--text-muted); font-family: var(--font-mono); font-size: 11px; margin-left: 4px; }
+.experience-empty { color: var(--text-muted); margin: 0; }
+.role.is-filtered-out { display: none; }
 .timeline { position: relative; padding-left: 28px; }
 .timeline::before {
   content: '';
