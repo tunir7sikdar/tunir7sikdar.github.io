@@ -297,35 +297,6 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outlin
   font-size: 12.5px;
   line-height: 1.45;
 }
-.impact-strip {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 1px;
-  margin-top: 14px;
-  border: 1px solid var(--panel-border);
-  background: var(--panel-border);
-  box-shadow: var(--panel-shadow);
-}
-.impact-item {
-  display: grid;
-  gap: 2px;
-  padding: 12px 14px;
-  background: color-mix(in srgb, var(--panel) 92%, transparent);
-}
-.impact-item strong {
-  color: var(--accent);
-  font-family: var(--font-display);
-  font-size: 21px;
-  line-height: 1.1;
-}
-.impact-item span {
-  color: var(--text-muted);
-  font-family: var(--font-mono);
-  font-size: 10px;
-  line-height: 1.35;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-}
 
 @media (max-width: 640px) {
   .wrap {
@@ -383,8 +354,6 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outlin
   .status-item b {
     font-size: 12px;
   }
-  .impact-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .impact-item { padding: 11px 12px; }
 }
 
 @media (min-width: 641px) and (max-width: 980px) {
